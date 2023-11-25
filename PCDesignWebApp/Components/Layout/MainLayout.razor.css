@@ -1,0 +1,17 @@
+/**
+ * @file Shared.css
+ * @author Thomas Tran Dang (thomasdang92@gmail.com)
+ * @brief This file provides the stylesheet for the entire Web Application.
+ * @version 0.1
+ * @date 2023-11-10
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+ /* For some reason this 'page' and 'body' only apply the background color within a container */
+ /* Please see app.razor and app.css for global settings */
+ /* .page {
+    background-color:rgba(5, 0, 33, 1);
+    color:white;
+} */

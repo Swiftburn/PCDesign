@@ -1,0 +1,79 @@
+/**
+ * @file Index.css
+ * @author Adolfo Barrientos (badolfo4@gmail.com)
+ * @brief This file provides the stylesheet for the Index portion of the web application. 
+ * @version 0.21
+ * @date 2023-11-11
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+/*.flare-background {
+    height: 20em;
+    width: 70em;
+    background-color: rgba(87, 104, 202, 0.4);
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: -1;
+    top: 88em;
+    left: 14%;
+    position: relative;
+    filter: blur(15em);
+}*/
+
+.page-grid-container {
+    display: grid;
+    row-gap: 15em;
+    column-gap: 10em;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 41.5% 41.5%;
+    align-items: center;
+}
+
+.cta-image-style {
+    width: 35em;
+    height: auto;
+    display:block;
+    margin:auto;
+}
+
+.cta-text-container {
+    text-align: center;
+    color: white;
+}
+
+.cta-header-style {
+    font-size:3.7em;
+}
+
+.cta-paragraph-style {
+    font-size: 2em;
+}
+
+.button-padding {
+    padding-top: 5em;
+}
+
+.cta-button-style {
+    text-align: center;
+    font-size: 2em;
+    color: white;
+    border: none;
+    border-radius: 12em;
+    padding: 1em 4em;
+    justify-content: center;
+}
+
+.cta-button-blue {
+    background: rgba(0, 145, 255, 1);
+}
+
+.cta-button-purple {
+    background: rgba(123, 52, 135, 1);
+}
+
+.center {
+    text-align: center;
+    justify-content: center;
+}

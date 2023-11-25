@@ -1,0 +1,85 @@
+﻿<!--
+ * @file NavMenu.razor
+ * @author Thomas Tran Dang (thomasdang92@gmail.com)
+ * @brief This file provides the code for the NavBar portion of the web application. 
+ *  A large portion of this NavBar was sourced from user martinmogusu on GitHub.
+ *  Link: https://github.com/martinmogusu/blazor-top-navbar
+ * @version 0.1
+ * @date 2023-11-09
+ *
+ * @copyright Copyright (c) 2023
+ *
+-->
+<link href="css/NavMenu.css" rel="stylesheet" />
+
+<nav class="navbar navbar-expand-md navbar-dark mb-4 sticky-top nav-custom-color">
+    <div class="container-fluid">
+        <div class="nav-brand-padding">
+            <a class="navbar-brand" href="#">
+                <img src="\images\pepe.jpg" width="50" height="50" class="d-inline-block" alt="">
+                PC Design
+            </a>
+        </div>
+
+        <button class="navbar-toggler @NavButtonCssClass" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-label="Toggle navigation" @onclick="ToggleNavMenu">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse @NavBarCssClass justify-content-end nav-menu-padding" id="navbarCollapse" @onclick="ToggleNavMenu">
+            <ul class="navbar-nav justify-content-end">
+                <li class="nav-item">
+                    <div class="nav-menu-padding">
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                            <div>
+                                <div class="nav-link-icon-padding"><span class="oi oi-home" aria-hidden="true"></span></div>
+                                <div>Home</div>
+                            </div>
+                        </NavLink>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-menu-padding">
+                        <NavLink class="nav-link" href="Wiki">
+                            <div>
+                                <div class="nav-link-icon-padding"><span class="oi oi-info" aria-hidden="true"></span></div>
+                                <div>Wiki</div>
+                            </div>
+                        </NavLink>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-menu-padding">
+                        <NavLink class="nav-link" href="Builder">
+                            <div>
+                                <div class="nav-link-icon-padding"><span class="oi oi-wrench" aria-hidden="true"></span></div>
+                                <div>Builder</div>
+                            </div>
+                        </NavLink>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-menu-padding">
+                        <NavLink class="nav-link" href="Login">
+                            <div>
+                                <div class="nav-link-icon-padding"><span class="oi oi-person" aria-hidden="true"></span></div>
+                                <div>Log in</div>
+                            </div>
+                        </NavLink>
+                    </div>
+                </li>
+            </ul
+        </div>
+    </div>
+</nav>
+
+@code {
+    private bool collapseNavMenu = true;
+    private string? NavBarCssClass => collapseNavMenu ? null : "show";
+    private string? NavButtonCssClass => collapseNavMenu ? "collapsed" : null;
+
+    private void ToggleNavMenu()
+    {
+        collapseNavMenu = !collapseNavMenu;
+    }
+}
+

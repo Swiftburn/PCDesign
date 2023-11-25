@@ -1,0 +1,138 @@
+/**
+ * @file Builder.css
+ * @author Thomas Tran Dang (thomasdang92@gmail.com)
+ * @brief This file provides the stylesheet for the Builder View portion of the web application. 
+ * @version 0.3
+ * @date 2023-11-13
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
+ .display-flex {
+    display: flex;
+}
+
+.builder-menu-container {
+    color: white;
+    background-color: rgba(81, 53, 118, 1);
+    padding-top: 2em;
+    padding-bottom: 2em;
+    margin-top: 2em;
+    margin-bottom:2em;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(5, 0, 33, 1);
+    border-radius: 100px;
+}
+
+.top-information-container {
+    margin-bottom: 2em;
+    display: flex;
+}
+
+.case-image-container {
+    padding-left: 8em;
+    max-width: 30em;
+    max-height: auto;
+}
+
+.case-image-style {
+    max-width: 70%;
+    height: auto;
+}
+
+.top-information-text-container {
+    padding-top: 1.2em;
+    padding-left: 1em;
+}
+
+.case-name-container {
+    margin-bottom: 6em;
+}
+
+.case-name-style {
+    font-size: 2.5em;
+}
+
+.cta-save-build-container {
+    text-align:center;
+    max-width: 50%;
+    padding-right: 6.8em;
+}
+
+.cta-need-help-container {
+    text-align: center;
+    padding-right: 5em;
+}
+
+.button-style {
+    color: black;
+    background-color: white;
+    border: none;
+    border-radius: 8em;
+    font-size: 2em;
+}
+
+.part {
+    background-color: white;
+    margin: auto;
+    margin-top: 2em;
+    width: 90%;
+    position: relative;
+    border-style: solid;
+    border-width: 2em;
+    border-color: white;
+    border-radius: 1em;
+}
+
+.part-name-style {
+    color: black;
+    font-size: 1.7em;
+    text-align: center;
+    /* padding-left: 13em; */
+    padding-bottom: 1em;
+    font-weight: bold;
+}
+
+.part-image-container {
+    align-items: center;
+    text-align: center;
+    width: auto;
+}
+
+.part-image-style {
+    width: 10em;
+    height: 10em;
+}
+.buyer-images-padding {
+    padding-left: 5.3em;
+    display: flex;
+}
+
+.buyer-image-container {
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 50%;
+    padding-right: 2em;
+    padding-left: 2em;
+}
+
+.buyer-image-style {
+    height: 6em;
+    width: 6em;
+}
+.price-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 1em;
+    padding-left: 4em;
+    padding-right: 4em;
+}
+
+.price-style {
+    color: black;
+    font-size: 1.7em;
+}

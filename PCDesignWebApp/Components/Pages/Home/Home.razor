@@ -1,0 +1,68 @@
+ @*
+ * @file Index.razor
+ * @author Adolfo Barrientos (badolfo4@gmail.com) Thomas Tran Dang (thomasdang92@gmail.com)
+ * @brief This file provides the code for the index portion of the web application.
+ * @version 0.22
+ * @date 2023-11-12
+ *
+ * @copyright Copyright (c) 2023
+ *
+ *@
+
+@page "/"
+<PageTitle>PC Design</PageTitle>
+<link href="Home.razor.css" rel="stylesheet" />
+<link href="Layout/MainLayout.razor.css" rel="stylesheet" />
+@inject NavigationManager NavigationManager
+
+<body>
+    <!-- super hack: removed for now
+    <div class="flare-background">
+    </div>
+    -->
+
+    <div class="page-grid-container">
+
+        <div><img src="/images/confusedGal.png" class="cta-image-style cta-image-right-style"></div>
+        <div class="center">
+            <h1 class="cta-header-style">Confused? Try Our Wiki!</h1>
+            <p class="cta-paragraph-style">There are several helpful wiki pages to help guide you through your build!</p>
+            <div class="button-padding"><button type="button" @onclick="NavigateToWiki" class="cta-button-style cta-button-blue">GO TO WIKI!</button></div>
+        </div>
+
+        <div class="center">
+            <h1 class="cta-header-style">Don't Know Where to Start?</h1>
+            <p class="cta-paragraph-style">Check out these guides to get started!</p>
+            <div class="button-padding"><button type="button" @onclick="NavigateStarterGuide" class="cta-button-style cta-button-purple">STARTER GUIDE</button></div>
+        </div>
+        <div><img src="/images/researchGal.png" loading="lazy" class="cta-image-style cta-image-left-style"></div>
+
+
+        <div><img src="/images/buildGuy.png" loading="lazy" class="cta-image-style cta-image-right-style"></div>
+        <div class="center">
+            <h1 class="cta-header-style">Build Your Own PC!</h1>
+            <p class="cta-paragraph-style">Head on over to the builder to started on building your PC!</p>
+            <div class="button-padding"><button type="button" @onclick="NavigateToBuilder" class="cta-button-style cta-button-blue">BUILD NOW!</button></div>
+        </div>
+
+    </div>
+</body>
+
+@code {
+    private void NavigateToWiki() {
+        NavigationManager.NavigateTo("/Wiki");
+    }
+}
+
+@code {
+    private void NavigateStarterGuide()
+    {
+        NavigationManager.NavigateTo("/wiki/article/1");
+    }
+}
+
+@code {
+    private void NavigateToBuilder() {
+        NavigationManager.NavigateTo("/Builder");
+    }
+}

@@ -1,0 +1,127 @@
+<link href="css/Shared.css" rel="stylesheet" />
+@* @page "/wiki/article/{ArticleId:int}" *@
+@page "/articles"
+
+@* @code {
+    [Parameter]
+    public int ArticleId { get; set; }
+
+    private WikiArticle article;
+
+    protected override void OnInitialized()
+    {
+        article = Articles.FirstOrDefault(a => a.Id == ArticleId);
+    }
+
+    private List<WikiArticle> Articles = new List<WikiArticle>
+    {
+             new WikiArticle
+    {
+        Id = 1,
+        Title = "STARTER GUIDE",
+        Content = "For the newly initiated, building a gaming PC is an insanely intimidating endeavor. Even coming from a non-technical background, the process isn’t as scary as you might imagine. It’s less akin to computer engineering and more like to building a Lego set, if the Legos were much fewer in number and much pricier.\n\nLike any problem, it helps to break it down in parts, in this case, computer parts.\n\nWhat do you need to build a gaming PC and what to consider in terms of gaming PC part compatibility? Here’s a comprehensive gaming PC part list, with a caveat we give from experience: be wary of part compatibility and do your research before you buy any individual part!\n\n- Case\n- Motherboard\n- Central processing unit (CPU)\n- Graphics processing unit (GPU/graphics card/video card)\n- RAM\n- Power supply unit (PSU)\n- Hard drive (SSD/HDD)\n- Cooling\n\nGaming peripherals/accessories:\n- Gaming monitors\n- Gaming mice\n- Gaming keyboards\n- Gaming speakers\n- Gaming headsets",
+        ImageUrl = "images/pcbuildStart.jpg"
+
+    },
+         new WikiArticle
+    {
+        Id = 2,
+        Title = "How to build your own PC",
+        Content = "ALMOST EVERYONE USES computers, but we never really get into the guts of how they work. Sometimes it’s nice to make something with your own hands that you'll use every day. That’s what this guide is about: how to build a PC from parts.\n\nThis can be daunting for a lot of reasons—it’s expensive, it’s complex, it can get messy. But I want to be clear: If you can build an Ikea table, bookshelf, bed, or anything that comes in more than one of those deceivingly heavy flat packs, you can build a PC. The tricky part? I can't tell you how to build your PC. Not really. Not unless I know exactly which hardware you're using. I can, however, explain what each component does and what my recommendations are for each category.",
+        ImageUrl = "images/Pcparts1.jpg"
+    },
+
+     new WikiArticle
+    {
+        Id = 3,
+        Title = "Putting Together Your PC",
+        Content = "Wiping a hard drive means to erase all the data stored on it to a point where it is difficult or impossible to recover the data. Here are general steps to wipe a hard drive:Back Up Important Data: Before wiping your hard drive, ensure that you have backed up any important data you wish to keep to another storage device or cloud service.\n\nBack Up Important Data: Before wiping your hard drive, ensure that you have backed up any important data you wish to keep to another storage device or cloud service.",
+        ImageUrl ="images/wipeHD.jpg"
+    },
+    new WikiArticle
+    {
+        Id = 4,
+        Title = "Configring Software",
+        Content = "Upgrading your PC can breathe new life into an older system and enhance its performance. Here's a guide to help you through the process:\n\n1. Determine Your Upgrade Goals. Performance: If your PC is slow, upgrading the RAM or switching to an SSD can help. Gaming: For a better gaming experience, you might need a new graphics card or more RAM.Storage: If you need more space, consider adding another hard drive or upgrading to a larger SSD.\n\n2. Check Compatibility. Motherboard: It determines what CPU, RAM, and expansion cards you can install.Power Supply: Ensure it has the necessary wattage and connectors for your upgrades.",
+        ImageUrl ="images/pcbuildStart.jpg"
+    },
+    new WikiArticle
+    {
+        Id = 5,
+        Title = "Buying PC parts in 2023",
+        Content = "Buying PC parts in 2023 involves a combination of research, comparison shopping, and staying informed about the latest technology trends. Here's a guide to help you navigate the process:1. Determine Your Needs and Budget\n\n2. Research Componentsn\n\n3. Timing Your Purchase\n\n4. Where to Buy",
+        ImageUrl ="images/pcbuildStart.jpg"
+    },
+    new WikiArticle
+    {
+        Id = 6,
+        Title = "What is a CPU? Here’s everything you need to know",
+        Content = "",
+        ImageUrl =""
+    },
+    new WikiArticle
+    {
+        Id = 7,
+        Title = "Best graphics cards 2023: GPUs for every budget",
+        Content = "",
+        ImageUrl =""
+    },
+    new WikiArticle
+    {
+        Id = 8,
+        Title = "How Motherboards Work",
+        Content = "",
+        ImageUrl =""
+    },
+    new WikiArticle
+    {
+        Id = 9,
+        Title = "What Does Computer Memory (RAM) Do",
+        Content = "",
+        ImageUrl =""
+    },
+    new WikiArticle
+    {
+        Id = 10,
+        Title = "How PC Power Supplies Work",
+        Content = "",
+        ImageUrl =""
+    },
+    new WikiArticle
+    {
+        Id = 11,
+        Title = "What is a Computer Data Storage Device?",
+        Content = "",
+        ImageUrl =""
+    },
+    };
+
+    private class WikiArticle
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public string Content { get; set; }
+        public string ImageUrl { get; set; }
+    }
+}
+
+@if (article != null)
+{
+    <div class="article-content">
+        <h1 class="article-header">@article.Title</h1>
+        @if (!string.IsNullOrEmpty(article.ImageUrl))
+        {
+            <img src="@article.ImageUrl" alt="Image description" class="article-image" />
+        }
+        <div class="article-body">
+            @((MarkupString)article.Content)
+        </div>
+    </div>
+}
+else
+{
+    <p>Article not found.</p>
+}
+
+
+@import "Articles.razor.css" *@

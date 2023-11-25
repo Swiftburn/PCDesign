@@ -1,0 +1,184 @@
+<!--
+ * @file Builder.razor
+ * @author Thomas Tran Dang (thomasdang92@gmail.com)
+ * @brief This file provides the code for the Builder View portion of the web application.
+ * @version 0.2
+ * @date 2023-11-13
+ *
+ * @copyright Copyright (c) 2023
+ *
+-->
+
+@page "/builderview"
+<PageTitle>Builder View</PageTitle>
+@* <link href="css/BuilderView.css" rel="stylesheet"/>
+<link href="css/Shared.css" rel="stylesheet" /> *@
+
+<body>
+    <div class="builder-menu-container">
+        <div class="top-information-container">
+            <div class="case-image-container"><img src="/images/case.png" class="case-image-style"></div>
+
+            <div class="top-information-text-container">
+                <div class="case-name-container"><h1 class="case-name-style">Corsair Medium Case</h1></div>
+       
+                <div class="display-flex">
+                    <div class="cta-save-build-container">
+                        <h2>Save This Build To Your Profile</h2>
+                        <div><button type="button" class="button-style">Save Build</button></div>
+                    </div>
+                    <div class="cta-need-help-container">
+                        <h2>Need Help? Click Below</h2>
+                        <div><button type="button" class="button-style">Motherboard Guide</button></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="part">
+            <div class="display-flex">
+            <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">CPU</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">CPU Cooler</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">Motherboard</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">Ram</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">Storage</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">GPU</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">Case</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="part">
+            <div class="display-flex">
+                <div class="part-image-container"><img src="\images\pepe.jpg" class="part-image-style"></div>
+                <div>
+                    <h1 class="part-name-style">Power Supply</h1>
+                    <div class="display-flex">
+                        <div class="buyer-images-padding">
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                            <div class="buyer-image-container"><img src="/images/amazonCircle.png" loading="lazy" class="buyer-image-style"></div>
+                        </div>
+                        <div class="price-container"><p class="price-style">Price</p></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</body>

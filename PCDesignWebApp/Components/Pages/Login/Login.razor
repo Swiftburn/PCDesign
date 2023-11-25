@@ -1,0 +1,28 @@
+<!--
+ * @file Login.razer
+ * @author Thomas Tran Dang (thomasdang92@gmail.com) Madelyn Little (mlittle6@atu.edu)
+ * @brief This file provides the code for the login portion of the web application.
+ * @version 0.13
+ * @date 2023-11-11
+ *
+ * @copyright Copyright (c) 2023
+ *
+-->
+@page "/login"
+<PageTitle>Login</PageTitle>
+<link href="css/Login.css" rel="stylesheet" />
+<body>
+    <h1 class="welcome">Welcome Back!</h1>
+    <form class="login-menu" action="/account">
+        <div class="icon-container">
+            <img src="\images\account-icon.svg" alt="account avatar" class="account">
+        </div>
+        <!--<label class="label-email" for="email"><b>Email</b></label>-->
+        <input class="input" type="text" placeholder="Email" name="email" required><br><br>
+        <!--<label for="pswd"><b>Password</b></label>-->
+        <input class="input" type="password" placeholder="Password" name="pswd" required><br><br>
+        <button class="login-button" type="submit">Login</button><br><br>
+        <p style="font-size: 25px;">Don't have an account? <a href="/register">Get Started!</a></p>
+    </form>
+    
+</body>

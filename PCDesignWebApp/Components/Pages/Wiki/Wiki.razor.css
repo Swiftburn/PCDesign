@@ -1,0 +1,139 @@
+.wiki-container {
+    display: flex;
+    height: 100vh;
+    position: relative;
+}
+
+.btn-toggle {
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+    border-radius: 5px;
+}
+
+.sidebar {
+    max-width: 250px;
+    background-color: #513576;
+    overflow-x: hidden;
+    transition: max-width 0.3s ease;
+    border-bottom: 1px solid #444;
+    border-radius: 10px;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    background-color: #320A28; 
+    color: white; 
+    border-bottom: 1px solid #444;
+}
+
+.nav-link {
+    color: white;
+    padding: 0.5rem 1rem; 
+    display: block;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+
+.content {
+    padding: 1rem;
+    width: 100%;
+    margin-left: 250px; 
+    transition: margin-left 0.5s ease; 
+    flex-grow: 1;
+    background-color: white;
+}
+
+.accordion {
+    
+    padding: 35px
+}
+
+/*.button{
+    background-color:#ff0000;
+}*/
+
+.button-Container {
+    width: 100%;
+    height: 100%;
+    background-color: #513576;
+    padding: 25px;
+    border-radius: 12px;
+}
+
+.accordion-button:not(.collapsed) {
+    color: rgba(255, 255, 255, 0.5);
+    background-color: #513576;
+    box-shadow: none;
+    border-left: 2px white solid;
+    border-top: 2px white solid;
+    border-radius: 15px 0 0 0;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+}
+
+    .accordion-button:not(.collapsed)::after {
+        all:unset
+    }
+
+.accordion-button.button.actived {
+    color: white;
+    border-top: 0;
+    border-left: 2px white solid;
+    border-bottom: 2px white solid;
+    border-radius: 0 0 0 15px;
+}
+
+.accordion-button {
+    background-color: #ff0000;
+    cursor: pointer;
+    padding: 0;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    transition: 0s;
+    position: relative;
+}
+    .accordion-button span {
+        padding: 0 12.5px;
+        transition: transform 0.5s;
+        font-size: 2rem;
+    }
+
+    .accordion-button.actived span {
+        transform: rotate(180deg);
+    }
+    .accordion-button:after {
+        color: #777;
+        font-weight: bold;
+        margin-left: 12px;
+        float: left;
+        position: absolute;
+        left: 0px;
+        top: 28%;
+        transform: translateY(-50%);
+        transition: transform 0.2s ease-out;
+    }
+
+    .accordion-button.active:after {
+        transform: translateY(-50%) rotate(-180deg);
+        content: "\2212";
+        color: white;
+        content: '▼';
+    }
+
+.panel {
+    padding: 0px 12px 1px;
+    background-color: white;
+    transition: max-height 0.2s ease-out;
+    /*border-radius: 12px;*/
+    background-color: #513576;
+    color:white;
+}

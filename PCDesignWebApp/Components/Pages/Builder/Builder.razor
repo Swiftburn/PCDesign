@@ -1,0 +1,250 @@
+<!--
+ * @file Builder.razor
+ * @author Adolfo Barrientos (badolfo4@gmail.com)
+ * @brief This file provides the code for the builder portion of the web application.
+ * @version 0.12
+ * @date 2023-11-13
+ *
+ * @copyright Copyright (c) 2023
+ *
+-->
+
+@page "/builder"
+
+@* <link href="Builder.razor.css" rel="stylesheet" /> *@
+@* <link href="Layout/MainLayout.razor.css" rel="stylesheet" /> *@
+
+<PageTitle>Builder</PageTitle>
+
+
+<body>
+
+    <div class="background-container">
+
+        <div class="filter-cta-container">
+            <div class="filter-background">
+
+                @*Budget Filter*@
+
+                <h5>Please Select Your Budget</h5>
+                <div class="slider">
+                    <input type="range" id="slider" min="500" max="3000" value="500" />
+                    <p>Selected Value: <span id="sliderValue">$500</span></p>
+                </div>
+
+
+                @*Use Case Filter*@
+
+                <h5>Please Select Your Use Case</h5>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Everyday</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Business</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Gamer</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Visual Artist</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Video Editing</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Engineering</p>
+                </div>
+
+
+                @*Case Size Filter*@
+
+                <h5>Case Size</h5>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Micro Tower</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Medium Tower</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">Full Tower</p>
+                </div>
+
+
+                @*Accessories Filter*@
+
+                <h5>Accessories</h5>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">RGB Lights</p>
+                </div>
+
+                <div class="filter-options">
+                    <button class="dot"></button> <p class="options">CD Drive</p>
+                </div>
+
+            </div>
+
+
+            @*Call to Action*@
+            <div class="cta">
+                <p class="cta-text">Need Help?</p>
+                <a class="cta-btn" href="/wiki">Go To Our Wiki</a>
+            </div>
+        </div>
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*Available Products*@
+
+        <div class="prebuild-grid">
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+        </div>
+
+
+    </div>
+
+        
+
+
+</body>

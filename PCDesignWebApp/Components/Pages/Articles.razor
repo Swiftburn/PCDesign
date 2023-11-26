@@ -1,8 +1,18 @@
-<link href="css/Shared.css" rel="stylesheet" />
-@* @page "/wiki/article/{ArticleId:int}" *@
-@page "/articles"
+<!--
+ * @file Articles.razor
+ * @author Adolfo Barrientos (badolfo4@gmail.com)
+ * @brief This file provides the code for the Articles portion of the web application.
+ * @version 0.12
+ * @date 2023-11-13
+ *
+ * @copyright Copyright (c) 2023
+ *
+-->
 
-@* @code {
+@* <link href="css/Shared.css" rel="stylesheet" />
+@page "/wiki/article/{ArticleId:int}"
+
+@code {
     [Parameter]
     public int ArticleId { get; set; }
 
@@ -124,4 +134,43 @@ else
 }
 
 
-@import "Articles.razor.css" *@
+<style>
+    .article-content {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 2rem;
+        background-color: #a29bfe; /* Adjust as needed */
+        color: #333; /* Adjust as needed */
+    }
+
+    .article-header h1 {
+        font-size: 2.5rem;
+        color: #000; /* Adjust as needed */
+    }
+
+    .article-meta {
+        font-size: 0.875rem;
+        color: #666; /* Adjust as needed */
+        margin-bottom: 2rem;
+    }
+
+    .article-body {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .article-image {
+        width: 100%; /* or max-width: 100%; depending on layout needs */
+        height: auto;
+        display: block;
+        margin: 0 auto 2rem auto; 
+    }
+
+    .content {
+        flex-grow: 1;
+        background-color: #513576;
+        border-bottom: solid 10px #513576;
+        
+    }
+</style>  *@

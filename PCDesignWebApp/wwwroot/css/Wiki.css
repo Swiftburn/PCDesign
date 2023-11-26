@@ -1,3 +1,14 @@
+/**
+ * @file Wiki.css
+ * @author Adolfo Barrientos (badolfo4@gmail.com)
+ * @brief This file provides the stylesheet for the Wiki portion of the web application. 
+ * @version 0.21
+ * @date 2023-11-11
+ * 
+ * @copyright Copyright (c) 2023
+ * 
+ */
+
 .wiki-container {
     display: flex;
     height: 100vh;

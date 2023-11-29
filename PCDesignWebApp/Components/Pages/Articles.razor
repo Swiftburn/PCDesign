@@ -1,7 +1,7 @@
 <!--
- * @file Articles.razor
+ * @file Article.razor
  * @author Adolfo Barrientos (badolfo4@gmail.com)
- * @brief This file provides the code for the Articles portion of the web application.
+ * @brief This file provides the code for the Article portion of the web application.
  * @version 0.12
  * @date 2023-11-13
  *
@@ -10,6 +10,7 @@
 -->
 
 <link href="css/Shared.css" rel="stylesheet" />
+<link href="css/Articles.css" rel="stylesheet" />
 @page "/wiki/article/{ArticleId:int}"
 
 @code {
@@ -20,10 +21,10 @@
 
     protected override void OnInitialized()
     {
-        article = Articles.FirstOrDefault(a => a.Id == ArticleId);
+        article = Article.FirstOrDefault(a => a.Id == ArticleId);
     }
 
-    private List<WikiArticle> Articles = new List<WikiArticle>
+    private List<WikiArticle> Article = new List<WikiArticle>
     {
              new WikiArticle
     {
@@ -55,58 +56,51 @@
         Id = 4,
         Title = "Configring Software",
         Content = "Upgrading your PC can breathe new life into an older system and enhance its performance. Here's a guide to help you through the process:\n\n1. Determine Your Upgrade Goals. Performance: If your PC is slow, upgrading the RAM or switching to an SSD can help. Gaming: For a better gaming experience, you might need a new graphics card or more RAM.Storage: If you need more space, consider adding another hard drive or upgrading to a larger SSD.\n\n2. Check Compatibility. Motherboard: It determines what CPU, RAM, and expansion cards you can install.Power Supply: Ensure it has the necessary wattage and connectors for your upgrades.",
-        ImageUrl ="images/pcbuildStart.jpg"
+        ImageUrl ="images/case.png"
     },
 
     new WikiArticle
     {
         Id = 5,
-        Title = "Buying PC parts in 2023",
-        Content = "Buying PC parts in 2023 involves a combination of research, comparison shopping, and staying informed about the latest technology trends. Here's a guide to help you navigate the process:1. Determine Your Needs and Budget\n\n2. Research Componentsn\n\n3. Timing Your Purchase\n\n4. Where to Buy",
+        Title = "Configring Startup",
+        Content = "An explanation of what startup configuration is and why it's important. Steps to access the BIOS or UEFI settings on a PC. How to change the boot order to select which device to boot from first. Instructions for enabling or disabling fast boot and secure boot options.Tips for managing startup programs in the operating system for faster boot times.",
         ImageUrl ="images/pcbuildStart.jpg"
     },
     new WikiArticle
     {
         Id = 6,
-        Title = "What is a CPU? Here’s everything you need to know",
-        Content = "",
+        Title = "Configring Bios",
+        Content = "Accessing BIOS/UEFI: How to enter BIOS/UEFI setup utility. This usually involves pressing a key like F2, F10, DEL, or ESC during the boot process. Navigating BIOS/UEFI: An explanation of the different tabs and settings that can be found in the BIOS. Boot Order: How to change the boot order to select which device (e.g., hard drive, USB, CD/DVD) the computer boots from first. Security Settings: Setting up a BIOS password for added security. Configuring Secure Boot to prevent unauthorized operating systems from booting. Performance Settings: Adjusting settings for better performance, such as enabling or disabling Turbo Mode or setting the correct XMP profile for RAM. Hardware Configuration: Instructions for enabling or disabling onboard devices like sound and graphics cards. Configuring CPU fan settings or monitoring system temperatures. Saving and Exiting: How to save the changes made in the BIOS and exit safely.",
         ImageUrl =""
     },
     new WikiArticle
     {
         Id = 7,
-        Title = "Best graphics cards 2023: GPUs for every budget",
+        Title = "Keeping Your Old Files & Data",
         Content = "",
         ImageUrl =""
     },
     new WikiArticle
     {
         Id = 8,
-        Title = "How Motherboards Work",
+        Title = "Trouble Shooting",
         Content = "",
         ImageUrl =""
     },
     new WikiArticle
     {
         Id = 9,
-        Title = "What Does Computer Memory (RAM) Do",
-        Content = "",
-        ImageUrl =""
+        Title = "What Are Use Cases?",
+        Content = "The term 'use casesin' the context of PC building and technology refers to the various scenarios or purposes for which a computer system is designed and used. Understanding different use cases is crucial in determining the right components and specifications for a PC. Here are some common use cases and what they typically entail: Gaming: Gaming PCs require powerful graphics cards, high-performance CPUs, and fast memory. The focus is on delivering high frame rates and resolutions for a smooth gaming experience. Workstations for Professionals: These PCs are tailored for professionals like video editors, architects, and engineers. They often require high CPU power, ample RAM, and professional-grade graphics cards for tasks like 3D rendering, large-scale simulations, or video editing. Home and Office Use: PCs designed for general home and office use don't need top-of-the-line specs. They are usually built with cost-effective components sufficient for web browsing, office applications, and media consumption. Content Creation and Streaming: Content creators and live streamers need PCs that can handle multitasking, video editing, and live encoding. Such systems often include a strong CPU, a capable GPU, and plenty of RAM and storage. Servers and Network Storage: PCs used as servers or for network-attached storage (NAS) focus on reliability, storage capacity, and network connectivity rather than high-end graphics or fast gaming performance.",
+        ImageUrl ="images/useCase.jpg"
     },
     new WikiArticle
-    {
-        Id = 10,
-        Title = "How PC Power Supplies Work",
-        Content = "",
-        ImageUrl =""
-    },
-    new WikiArticle
-    {
-        Id = 11,
-        Title = "What is a Computer Data Storage Device?",
-        Content = "",
-        ImageUrl =""
-    },
+{
+    Id = 10,
+    Title = "What Are Cases Size?",
+    Content = "Understanding PC case sizes is crucial when building a computer, as it determines the size of the components you can fit inside and the overall footprint of your build. PC cases come in several standard sizes, each catering to different needs and preferences. Full Tower: Full tower cases are the largest, designed for enthusiasts and high-end builds. They offer ample space for multiple graphics cards, extensive cooling solutions, and several storage drives. Ideal for users who want maximum expandability and aren't concerned about space constraints. Mid Tower: Mid tower cases are the most common size for PC builds. They strike a balance between size and functionality, offering enough room for a standard ATX motherboard and several components while not taking up as much space as full towers. Mini Tower: Smaller than mid towers, mini tower cases are compatible with micro-ATX motherboards. They are more compact, making them a good choice for users with limited space who still want some room for component flexibility. Small Form Factor (SFF) and Mini-ITX Cases: These are the smallest PC cases and are designed for mini-ITX motherboards. They are perfect for ultra-compact builds and can be great for living room PCs or users who prioritize space efficiency over expandability. Each case size has its advantages and limitations. Larger cases provide more space for components and cooling but require more physical space. Smaller cases are more space-efficient but may limit the size of the components you can use and the extent to which you can upgrade your PC in the future.",
+    ImageUrl = "images/caseSizes.jpg"
+},
     };
 
     private class WikiArticle
@@ -136,44 +130,3 @@ else
     <p>Article not found.</p>
 }
 
-
-@* <style>
-    .article-content {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 2rem;
-        background-color: #a29bfe; /* Adjust as needed */
-        color: #333; /* Adjust as needed */
-    }
-
-    .article-header h1 {
-        font-size: 2.5rem;
-        color: #000; /* Adjust as needed */
-    }
-
-    .article-meta {
-        font-size: 0.875rem;
-        color: #666; /* Adjust as needed */
-        margin-bottom: 2rem;
-    }
-
-    .article-body {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    .article-image {
-        width: 100%; /* or max-width: 100%; depending on layout needs */
-        height: auto;
-        display: block;
-        margin: 0 auto 2rem auto; 
-    }
-
-    .content {
-        flex-grow: 1;
-        background-color: #513576;
-        border-bottom: solid 10px #513576;
-        
-    }
-</style>  *@

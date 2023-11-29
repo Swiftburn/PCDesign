@@ -1,5 +1,9 @@
 using PCDesignWebApp.Components;
 
+
+string credentialPath = @"..\pcdesign-99abf-firebase-adminsdk-rzgpd-d96f1f4d7d.json";
+Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath);
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

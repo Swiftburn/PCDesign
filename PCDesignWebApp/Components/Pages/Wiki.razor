@@ -24,8 +24,8 @@
         </button>
         <div class="panel" id="panel1" style="max-height: 0; opacity:0; ">
             <NavLink class="nav-link" href="/wiki/article/1">How To Start Picking Your PC Parts</NavLink>
-            <NavLink class="nav-link" href="/wiki/article/1">What Are Use Cases?</NavLink>
-            <NavLink class="nav-link" href="/wiki/article/1">What Are Cases Size?</NavLink>
+            <NavLink class="nav-link" href="/wiki/article/9">What Are Use Cases?</NavLink>
+            <NavLink class="nav-link" href="/wiki/article/10">What Are Cases Size?</NavLink>
         </div>
 
       
@@ -102,19 +102,5 @@
     </div>
 </div>
 
-<script>
-    function ToggleAccordion(id) {
-        var panel = document.getElementById("panel" + id);
-        var button = document.getElementById("article" + id);
+<script src="js/Wiki.js"></script>
 
-        if (panel.style.maxHeight === "0px") {
-            panel.style.maxHeight = "150px"; 
-            panel.style.opacity = 1;
-            button.classList.add("actived");
-        } else {
-            panel.style.maxHeight = "0";
-            panel.style.opacity = 0;
-            button.classList.remove("actived");
-        }
-    }
-</script>

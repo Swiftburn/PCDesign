@@ -12,3 +12,4 @@
             button.classList.remove("actived");
         }
     }
+

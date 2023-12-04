@@ -21,7 +21,9 @@
     position: relative;
     filter: blur(15em);
 }*/
-
+a {
+    text-decoration: none;
+  }
 .page-grid-container {
     display: grid;
     row-gap: 15em;

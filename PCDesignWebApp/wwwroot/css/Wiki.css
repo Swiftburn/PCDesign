@@ -51,6 +51,9 @@
     transition: background-color 0.3s;
 }
 
+.nav-link:hover{
+    color: white;
+}
 
 .content {
     padding: 1rem;

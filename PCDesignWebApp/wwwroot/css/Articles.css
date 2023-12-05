@@ -14,18 +14,18 @@
     max-width: 800px;
     margin: 0 auto;
     padding: 2rem;
-    background-color: #a29bfe; /* Adjust as needed */
-    color: #333; /* Adjust as needed */
+    background-color: #a29bfe;
+    color: #333; 
 }
 
 .article-header h1 {
     font-size: 2.5rem;
-    color: #000; /* Adjust as needed */
+    color: #000;
 }
 
 .article-meta {
     font-size: 0.875rem;
-    color: #666; /* Adjust as needed */
+    color: #666; 
     margin-bottom: 2rem;
 }
 
@@ -35,7 +35,7 @@
 }
 
 .article-image {
-    width: 100%; /* or max-width: 100%; depending on layout needs */
+    width: 100%; 
     height: auto;
     display: block;
     margin: 0 auto 2rem auto; 

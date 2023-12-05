@@ -63,8 +63,9 @@ a {
     color: white;
     border: none;
     border-radius: 12em;
-    padding: 1em 4em;
+    padding: 1em 5vw;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .cta-button-blue {

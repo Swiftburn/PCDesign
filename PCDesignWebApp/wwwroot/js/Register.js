@@ -1,7 +1,7 @@
-/**
- * @file Login.js
+﻿/**
+ * @file Register.js
  * @author Thomas Tran Dang (thomasdang92@gmail.com)
- * @brief This file provides the JavaScript for the Login portion of the web application. 
+ * @brief This file provides the JavaScript for the Register portion of the web application. 
  * @version 0.1
  * @date 2023-12-10
  * 
@@ -9,11 +9,12 @@
  * 
  */
 
+
 //  Imported Firebase Functions
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
-import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getFirestore, doc, setDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 // Firebase Config
 const firebaseConfig = {
@@ -32,34 +33,24 @@ const analytics = getAnalytics(app);
 const db = getFirestore();
 const auth = getAuth(app);
 
-
+let FirstNameInput = document.getElementById('firstNameInput');
+let LastNameInput = document.getElementById('lastNameInput');
 let EmailInput = document.getElementById('emailInput');
 let PasswordInput = document.getElementById('passwordInput');
-let LoginMenu = document.getElementById('LoginMenu');
+let RegMenu = document.getElementById('RegMenu');
 
-
-let SignInUser = evt => {
+let RegisterUser = evt => {
     evt.preventDefault();
 
-    signInWithEmailAndPassword(auth, EmailInput.value, PasswordInput.value)
+    createUserWithEmailAndPassword(auth, EmailInput.value, PasswordInput.value)
         .then(async (credentials) => {
-            var ref = doc(db, "UserList", credentials.user.uid);
-            const docSnap = await getDoc(ref);
-
-
-            if (docSnap.exists()) {
-                console.log(credentials);
-                sessionStorage.setItem("user-info", JSON.stringify({
-                    firstName: docSnap.data().firstName,
-                    lastName: docSnap.data().lastName
-                }))
-                sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                window.location.href = "/account";
-            }
-            else {
-                sessionStorage.clear();
-            }
-
+            var reference = doc(db, "UserList", credentials.user.uid);
+            await setDoc(reference, {
+                firstName: FirstNameInput.value,
+                lastName: LastNameInput.value
+            })
+            window.location.href = "/login";
+            console.log(credentials);
         })
         // Error message (just in case)
         .catch((error) => {
@@ -69,4 +60,4 @@ let SignInUser = evt => {
         })
 }
 
-LoginMenu.addEventListener('submit', SignInUser);
+RegMenu.addEventListener('submit', RegisterUser)

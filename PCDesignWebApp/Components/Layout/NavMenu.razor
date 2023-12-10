@@ -63,16 +63,6 @@
                         <div id="loginAccountReturn"></div>
                     </div>
                 </li>
-                <li class="nav-item">
-                    <div class="nav-menu-padding">
-                        <NavLink class="nav-link" href="Account" @onclick="() => ReloadPage()">
-                            <div>
-                                <div class="nav-link-icon-padding"><span class="oi oi-wrench" aria-hidden="true"></span></div>
-                                <div>accountbutfortesting</div>
-                            </div>
-                        </NavLink>
-                    </div>
-                </li>
             </ul
         </div>
     </div>
@@ -90,12 +80,8 @@
 }
 
 @code {
-    // ... existing code ...
-
     private void ReloadPage()
     {
-        // Use the NavigationManager to navigate to the same page
-        // This will force a reload of the current page
         NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
     }
 }
@@ -104,22 +90,17 @@
 <body>
 <script>
     document.addEventListener('DOMContentLoaded', function () {
-        // Attach click event to a parent element (e.g., body) and delegate it to #navbarCollapse
         document.body.addEventListener('click', function (event) {
             if (event.target.closest('#navbarCollapse')) {
                 updateLoginAccountLink();
             }
         });
 
-        // Listen for custom events to update the login/account link dynamically
         document.addEventListener('userLogin', updateLoginAccountLink);
         document.addEventListener('userLogout', updateLoginAccountLink);
-
-        // Initial update when the page loads
         updateLoginAccountLink();
     });
 
-    // Update the function to be accessible globally
     window.updateLoginAccountLink = function () {
         let userCreds = JSON.parse(sessionStorage.getItem("user-creds"));
         let loginAccountReturn = document.getElementById('loginAccountReturn');

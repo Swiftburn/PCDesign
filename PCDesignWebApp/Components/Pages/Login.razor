@@ -57,13 +57,29 @@
         let PasswordInput = document.getElementById('passwordInput');
         let LoginMenu = document.getElementById('LoginMenu');
         
+
         let SignInUser = evt => {
             evt.preventDefault();
 
             signInWithEmailAndPassword(auth, EmailInput.value, PasswordInput.value)
-            .then((credentials)=>{
-                var reference = doc(db, "UserList", credentials.user.uid);
-                console.log(credentials);
+            .then(async(credentials)=>{
+                var ref = doc(db, "UserList", credentials.user.uid);
+                const docSnap = await getDoc(ref);
+
+                
+                if (docSnap.exists()) {
+                    console.log(credentials);
+                    sessionStorage.setItem("user-info", JSON.stringify({
+                        firstName: docSnap.data().firstName,
+                        lastName: docSnap.data().lastName
+                    }))
+                    sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                    window.location.href = "/account";
+                }
+                else { 
+                    sessionStorage.Clear();
+                }
+               
             })
             // Error message (just in case)
             .catch((error)=> {

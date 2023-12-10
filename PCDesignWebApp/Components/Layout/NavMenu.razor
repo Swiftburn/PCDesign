@@ -11,7 +11,7 @@
  *
 -->
 @inject IJSRuntime JSRuntime
-<link href="css/NavMenu.css" rel="stylesheet" />
+@inject NavigationManager NavigationManager
 
 <nav class="navbar navbar-expand-md navbar-dark mb-4 sticky-top nav-custom-color">
     <div class="container-fluid">
@@ -30,7 +30,7 @@
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
                     <div class="nav-menu-padding">
-                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+                        <NavLink class="nav-link" href="" Match="NavLinkMatch.All" @onclick="() => ReloadPage()">
                             <div>
                                 <div class="nav-link-icon-padding"><span class="oi oi-home" aria-hidden="true"></span></div>
                                 <div>Home</div>
@@ -39,7 +39,7 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <div class="nav-menu-padding">
+                    <div class="nav-menu-padding" @onclick="() => ReloadPage()">
                         <NavLink class="nav-link" href="Wiki">
                             <div>
                                 <div class="nav-link-icon-padding"><span class="oi oi-info" aria-hidden="true"></span></div>
@@ -50,7 +50,7 @@
                 </li>
                 <li class="nav-item">
                     <div class="nav-menu-padding">
-                        <NavLink class="nav-link" href="Builder">
+                        <NavLink class="nav-link" href="Builder" @onclick="() => ReloadPage()">
                             <div>
                                 <div class="nav-link-icon-padding"><span class="oi oi-wrench" aria-hidden="true"></span></div>
                                 <div>Builder</div>
@@ -61,6 +61,16 @@
                 <li class="nav-item">
                     <div class="nav-menu-padding">
                         <div id="loginAccountReturn"></div>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <div class="nav-menu-padding">
+                        <NavLink class="nav-link" href="Account" @onclick="() => ReloadPage()">
+                            <div>
+                                <div class="nav-link-icon-padding"><span class="oi oi-wrench" aria-hidden="true"></span></div>
+                                <div>accountbutfortesting</div>
+                            </div>
+                        </NavLink>
                     </div>
                 </li>
             </ul
@@ -78,6 +88,18 @@
         collapseNavMenu = !collapseNavMenu;
     }
 }
+
+@code {
+    // ... existing code ...
+
+    private void ReloadPage()
+    {
+        // Use the NavigationManager to navigate to the same page
+        // This will force a reload of the current page
+        NavigationManager.NavigateTo(NavigationManager.Uri, forceLoad: true);
+    }
+}
+
 
 <body>
 <script>

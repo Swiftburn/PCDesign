@@ -18,7 +18,7 @@
          <form class="login-menu" id="loginMenu">
             <form class="login-menu" action="/account" id="loginMenu">
     -->
-    <form class="login-menu" id="LoginMenu">
+    <form class="login-menu" id="LoginMenu" onsubmit="return SignInUser(event);">
         <div class="icon-container">
             <img src="\images\account-icon.svg" alt="account avatar" class="account">
         </div>
@@ -56,40 +56,39 @@
         let EmailInput = document.getElementById('emailInput');
         let PasswordInput = document.getElementById('passwordInput');
         let LoginMenu = document.getElementById('LoginMenu');
-        
+
 
         let SignInUser = evt => {
             evt.preventDefault();
 
             signInWithEmailAndPassword(auth, EmailInput.value, PasswordInput.value)
-            .then(async(credentials)=>{
-                var ref = doc(db, "UserList", credentials.user.uid);
-                const docSnap = await getDoc(ref);
+                .then(async (credentials) => {
+                    var ref = doc(db, "UserList", credentials.user.uid);
+                    const docSnap = await getDoc(ref);
 
-                
-                if (docSnap.exists()) {
-                    console.log(credentials);
-                    sessionStorage.setItem("user-info", JSON.stringify({
-                        firstName: docSnap.data().firstName,
-                        lastName: docSnap.data().lastName
-                    }))
-                    sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
-                    window.location.href = "/account";
-                }
-                else { 
-                    sessionStorage.Clear();
-                }
-               
-            })
-            // Error message (just in case)
-            .catch((error)=> {
-                alert(error.message);
-                console.log(error.code);
-                console.log(error.message);
-            })
+
+                    if (docSnap.exists()) {
+                        console.log(credentials);
+                        sessionStorage.setItem("user-info", JSON.stringify({
+                            firstName: docSnap.data().firstName,
+                            lastName: docSnap.data().lastName
+                        }))
+                        sessionStorage.setItem("user-creds", JSON.stringify(credentials.user));
+                        window.location.href = "/account";
+                    }
+                    else {
+                        sessionStorage.clear();
+                    }
+
+                })
+                // Error message (just in case)
+                .catch((error) => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                })
         }
 
         LoginMenu.addEventListener('submit', SignInUser);
-
     </script>
 </body>

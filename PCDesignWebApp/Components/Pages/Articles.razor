@@ -30,7 +30,7 @@
     {
         Id = 1,
         Title = "STARTER GUIDE",
-        Content = "For the newly initiated, building a gaming PC is an insanely intimidating endeavor. Even coming from a non-technical background, the process isn’t as scary as you might imagine. It’s less akin to computer engineering and more like to building a Lego set, if the Legos were much fewer in number and much pricier.\n\nLike any problem, it helps to break it down in parts, in this case, computer parts.\n\nWhat do you need to build a gaming PC and what to consider in terms of gaming PC part compatibility? Here’s a comprehensive gaming PC part list, with a caveat we give from experience: be wary of part compatibility and do your research before you buy any individual part!\n\n- Case\n- Motherboard\n- Central processing unit (CPU)\n- Graphics processing unit (GPU/graphics card/video card)\n- RAM\n- Power supply unit (PSU)\n- Hard drive (SSD/HDD)\n- Cooling\n\nGaming peripherals/accessories:\n- Gaming monitors\n- Gaming mice\n- Gaming keyboards\n- Gaming speakers\n- Gaming headsets",
+        Content = "For the newly initiated, building a gaming PC is an insanely intimidating endeavor. Even coming from a non-technical background, the process isn’t as scary as you might imagine. It’s less akin to computer engineering and more like to building a Lego set, if the Legos were much fewer in number and much pricier. Like any problem, it helps to break it down in parts, in this case, computer parts. What do you need to build a gaming PC and what to consider in terms of gaming PC part compatibility? Here’s a comprehensive gaming PC part list, with a caveat we give from experience: be wary of part compatibility and do your research before you buy any individual part!\n- Case\n- Motherboard\n- Central processing unit (CPU)\n- Graphics processing unit (GPU/graphics card/video card)\n- RAM\n- Power supply unit (PSU)\n- Hard drive (SSD/HDD)\n- Cooling\n\nGaming peripherals/accessories:\n- Gaming monitors\n- Gaming mice\n- Gaming keyboards\n- Gaming speakers -  Gaming headsets",
         ImageUrl = "images/pcbuildStart.jpg"
 
     },
@@ -40,6 +40,7 @@
         Id = 2,
         Title = "How to build your own PC",
         Content = "ALMOST EVERYONE USES computers, but we never really get into the guts of how they work. Sometimes it’s nice to make something with your own hands that you'll use every day. That’s what this guide is about: how to build a PC from parts.\n\nThis can be daunting for a lot of reasons—it’s expensive, it’s complex, it can get messy. But I want to be clear: If you can build an Ikea table, bookshelf, bed, or anything that comes in more than one of those deceivingly heavy flat packs, you can build a PC. The tricky part? I can't tell you how to build your PC. Not really. Not unless I know exactly which hardware you're using. I can, however, explain what each component does and what my recommendations are for each category.",
+        
         ImageUrl = "images/Pcparts1.jpg"
     },
 
@@ -64,28 +65,28 @@
         Id = 5,
         Title = "Configring Startup",
         Content = "An explanation of what startup configuration is and why it's important. Steps to access the BIOS or UEFI settings on a PC. How to change the boot order to select which device to boot from first. Instructions for enabling or disabling fast boot and secure boot options.Tips for managing startup programs in the operating system for faster boot times.",
-        ImageUrl ="images/pcbuildStart.jpg"
+        ImageUrl ="images/ConfigringStartup.jpg"
     },
     new WikiArticle
     {
         Id = 6,
         Title = "Configring Bios",
         Content = "Accessing BIOS/UEFI: How to enter BIOS/UEFI setup utility. This usually involves pressing a key like F2, F10, DEL, or ESC during the boot process. Navigating BIOS/UEFI: An explanation of the different tabs and settings that can be found in the BIOS. Boot Order: How to change the boot order to select which device (e.g., hard drive, USB, CD/DVD) the computer boots from first. Security Settings: Setting up a BIOS password for added security. Configuring Secure Boot to prevent unauthorized operating systems from booting. Performance Settings: Adjusting settings for better performance, such as enabling or disabling Turbo Mode or setting the correct XMP profile for RAM. Hardware Configuration: Instructions for enabling or disabling onboard devices like sound and graphics cards. Configuring CPU fan settings or monitoring system temperatures. Saving and Exiting: How to save the changes made in the BIOS and exit safely.",
-        ImageUrl =""
+        ImageUrl ="images/Configring Bios.webp"
     },
     new WikiArticle
     {
         Id = 7,
         Title = "Keeping Your Old Files & Data",
-        Content = "",
-        ImageUrl =""
+        Content = "Backup Your Data:Before making any changes, create a backup of your old files and data. Use external hard drives, cloud storage services, or backup software to ensure that your data is safe in case something goes wrong during the transition.",
+        ImageUrl ="images/Keeping Your Old Files & Data.png"
     },
     new WikiArticle
     {
         Id = 8,
         Title = "Trouble Shooting",
-        Content = "",
-        ImageUrl =""
+        Content = "Troubleshooting is the process of identifying and resolving issues or problems that occur in various systems, devices, software, or processes. Begin by clearly defining the problem. What exactly is not working as expected? Gather information about symptoms, error messages, or any changes that might have occurred before the issue started. If possible, recreate the problem to understand its behavior better. Reproducing the issue can help in diagnosing the root cause.",
+        ImageUrl ="images/Trouble Shooting.png"
     },
     new WikiArticle
     {
@@ -101,7 +102,7 @@
     Content = "Understanding PC case sizes is crucial when building a computer, as it determines the size of the components you can fit inside and the overall footprint of your build. PC cases come in several standard sizes, each catering to different needs and preferences. Full Tower: Full tower cases are the largest, designed for enthusiasts and high-end builds. They offer ample space for multiple graphics cards, extensive cooling solutions, and several storage drives. Ideal for users who want maximum expandability and aren't concerned about space constraints. Mid Tower: Mid tower cases are the most common size for PC builds. They strike a balance between size and functionality, offering enough room for a standard ATX motherboard and several components while not taking up as much space as full towers. Mini Tower: Smaller than mid towers, mini tower cases are compatible with micro-ATX motherboards. They are more compact, making them a good choice for users with limited space who still want some room for component flexibility. Small Form Factor (SFF) and Mini-ITX Cases: These are the smallest PC cases and are designed for mini-ITX motherboards. They are perfect for ultra-compact builds and can be great for living room PCs or users who prioritize space efficiency over expandability. Each case size has its advantages and limitations. Larger cases provide more space for components and cooling but require more physical space. Smaller cases are more space-efficient but may limit the size of the components you can use and the extent to which you can upgrade your PC in the future.",
     ImageUrl = "images/caseSizes.jpg"
 },
-    };
+    }; 
 
     private class WikiArticle
     {
@@ -111,6 +112,7 @@
         public string ImageUrl { get; set; }
     }
 }
+
 
 @if (article != null)
 {

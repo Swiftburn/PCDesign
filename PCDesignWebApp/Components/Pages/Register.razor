@@ -2,8 +2,8 @@
  * @file Register.razor
  * @author Thomas Tran Dang (thomasdang92@gmail.com) Madelyn Little(mlittle6@atu.edu)
  * @brief This file provides the code for the register portion of the web application.
- * @version 0.1
- * @date 2023-11-11
+ * @version 0.2
+ * @date 2023-11-29
  *
  * @copyright Copyright (c) 2023
  *
@@ -11,12 +11,23 @@
 @page "/register"
 <PageTitle>Register</PageTitle>
 <link href="css/Register.css" rel="stylesheet" />
+
 <p>Welcome!</p>
 <body>
-    <form class="reg-menu" action="/account">
-        <input type="text" placeholder="First Name" name="fname" required>   <input type="text" placeholder="Last Name" name="lname" required><br><br>
-        <input type="text" placeholder="Email" name="email" required>   <input type="text" placeholder="Re-enter Email" name="email" required><br><br>
-        <input type="password" placeholder="Password" name="pswd" required>   <input type="password" placeholder="Re-enter Password" name="pswd" required><br><br>
+    <!-- Note: Keep this for testing please
+         <form class="reg-menu" id="regMenu">
+            <form class="reg-menu" action="/account" id="regMenu">
+    -->
+
+    <form class="reg-menu" id="RegMenu">
+        <input type="text" placeholder="First Name" name="fName" id="firstNameInput" required>   
+        <input type="text" placeholder="Last Name" name="lName" id="lastNameInput" required><br><br>
+        <input type="email" placeholder="Email" name="email" id="emailInput" required>   
+        <input type="email" placeholder="Re-enter Email" name="emailRe" id="emailReInput" required><br><br>
+        <input type="password" placeholder="Password" name="pswd" id="passwordInput" required>   
+        <input type="password" placeholder="Re-enter Password" name="pswdRe" id="passwordReInput" required><br><br>
         <button class="btn" type="submit">Go</button><br><br>
     </form>
+
+    <script src="/js/Register.js" type="module"></script>
 </body>

@@ -1,14 +1,66 @@
 <!--
  * @file Account.razer
- * @author Thomas Tran Dang (thomasdang92@gmail.com) Madelyn Little (mlittle6@atu.edu)
+ * @author Thomas Tran Dang (thomasdang92@gmail.com) and Madelyn Little (mlittle6@atu.edu)
  * @brief This file provides the code for the account portion of the web application.
- * @version 0.1
- * @date 2023-10-16
+ * @version 0.12
+ * @date 2023-12-09
  *
  * @copyright Copyright (c) 2023
  *
 -->
 @page "/account"
 <PageTitle>Account</PageTitle>
-<h1>Account information will be shown here -_- -_- -_-</h1>
-<p>screaming crying throwing up</p>
+<link href="css/Account.css" rel="stylesheet" />
+@inject IJSRuntime JSRuntime
+
+<body>
+    <h1 class="welcome">Profile Page</h1>
+
+    <div class="profile-menu">
+        <div class="icon-container">
+            <img src="\images\account-icon.svg" alt="account avatar" class="account">
+        </div>
+            <div class="wow">
+                <p id="emaildiv" ></p>
+                <p id="firstnamediv"></p>
+                <p id="lastnamediv"></p>
+            </div>
+    </div>
+
+    <script defer>
+        document.addEventListener("DOMContentLoaded", function () {
+            function loadUserData() {
+                return new Promise((resolve) => {
+                    let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+                    let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+                    if (UserCreds && UserInfo) {
+                        resolve({ UserCreds, UserInfo });
+                    } else {
+                        setTimeout(() => loadUserData().then(resolve), 100);
+                    }
+                });
+            }
+
+            function updateProfile() {
+                loadUserData().then(({ UserCreds, UserInfo }) => {
+                    let EmailHead = document.getElementById('emaildiv');
+                    EmailHead.innerText = `Email: ${UserCreds.email}`;
+
+                    let FirstNameHead = document.getElementById('firstnamediv');
+                    FirstNameHead.innerText = `First Name: ${UserInfo.firstName}`;
+
+                    let LastNameHead = document.getElementById('lastnamediv');
+                    LastNameHead.innerText = `Last Name: ${UserInfo.lastName}`;
+                });
+            }
+
+            // Initial update
+            updateProfile();
+
+            // Update on hash change
+            window.onhashchange = updateProfile;
+        });
+    </script>
+
+</body>

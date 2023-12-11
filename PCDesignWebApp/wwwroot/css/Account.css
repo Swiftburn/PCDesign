@@ -1,10 +1,52 @@
 /**
  * @file Account.css
- * @author Adolfo Barrientos (badolfo4@gmail.com)
+ * @author Thomas Tran Dang (thomasdang92@gmail.com)
  * @brief This file provides the stylesheet for the Account portion of the web application. 
  * @version 0.21
- * @date 2023-11-11
+ * @date 2023-12-09
  * 
  * @copyright Copyright (c) 2023
  * 
  */
+
+
+.icon-container {
+    padding-left: 255px;
+    width: 75%;
+    height: 75%;
+}
+
+body {
+    text-align: center;
+    background-color: rgba(5, 0, 33, 1);
+    color: white;
+}
+
+.profile-menu {
+    color: black;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: white;
+    margin: 5px auto;
+    width: 80%;
+    font-size: 35px;
+    display: inline-block;
+    border-style: solid;
+    border-width: 20px;
+    border-color: rgba(5, 0, 33, 1);
+    border-radius: 150px;
+}
+
+
+.welcome {
+    font-size: 100px;
+    padding-top: 100px;
+}
+
+.wow {
+    text-align: left;
+    font-size: 1.1em;
+    padding-right: 5em;
+    padding-left: 5em;
+}
+

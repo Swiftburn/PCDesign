@@ -1,0 +1,255 @@
+@using Google.Cloud.Firestore
+@using Microsoft.AspNetCore.Components;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Threading.Tasks;
+
+
+
+@page "/filter"
+@inject IJSRuntime JSRuntime
+
+
+<link href="css/Builder.css" rel="stylesheet" />
+
+<PageTitle>Filter</PageTitle>
+
+<body>
+
+    <div class="background-container">
+
+        <div class="filter-cta-container">
+            <div class="filter-background">
+
+                <!-- Budget Filter -->
+                <h5>Please Select Your Budget</h5>
+                <div class="slider">
+                    <input type="range" id="slider" min="50" max="3000" value="@budget" @oninput="UpdateSliderValue" />
+                    <p>Selected Value: <span id="sliderValue">$@budget</span></p>
+                </div>
+
+                <!-- Use Case Filter -->
+               <h5>Please Select Your Use Case</h5>
+            <div class="filter-options">
+                <button class="dot" @onclick="ToggleEveryday" @class="GetSelectedClass('Everyday')"></button>
+                <p class="options">Everyday</p>
+            </div>
+            <div class="filter-options">
+                <button class="dot" @onclick="ToggleGamer" @class="GetSelectedClass('Gamer')"></button>
+                <p class="options">Gamer</p>
+            </div>
+            <div class="filter-options">
+                <button class="dot" @onclick="ToggleVideoEditing" @class="GetSelectedClass('Video Editing')"></button>
+                <p class="options">Video Editing</p>
+            </div>
+            
+
+
+            </div>
+
+
+            @*Call to Action*@
+            <div class="cta">
+                <p class="cta-text">Need Help?</p>
+                <a class="cta-btn" href="/wiki">Go To Our Wiki</a>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @*Available Products*@
+
+        <div class="prebuild-grid">
+            @foreach (var product in filteredProducts)
+                {
+                    <div class="prebuild-options">
+                        <a class="prebuild-link" href="/builderview">
+                            <img src="images/case.png" class="case-image">
+                        </a>
+                        <h5 class="prebuild-text">$@product.cost</h5>
+                        <p class="prebuild-text">@product.description</p>
+                    </div>
+                }
+
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+            <div class="prebuild-options">
+                <a class="prebuild-link" href="/builderview">
+                    <img src="images/case.png" class="case-image">
+                </a>
+                <h5 class="prebuild-text">$3,000</h5>
+                <p class="prebuild-text">Corsair Medium Tower</p>
+            </div>
+
+        
+
+        </div>
+
+
+    </div>
+
+
+
+
+</body>
+
+    @foreach (var note in notes)
+    {
+        <p> @note.description - Cost: $@note.cost</p>
+    }
+
+
+<script>
+    console.log('JavaScript code is running.');
+    // ... rest of your JavaScript code
+</script>
+
+
+@code {
+    FirestoreDb db = FirestoreDb.Create("pcdesign-99abf");
+
+    public class Notes
+    {
+        public string Id { get; set; }
+        public string description { get; set; }
+        public string cost { get; set; }
+        public string useCase { get; set; }
+    }
+
+    private IEnumerable<Notes> notes = Array.Empty<Notes>();
+    private IEnumerable<Notes> filteredProducts = Array.Empty<Notes>();
+    private int budget = 50;
+    private List<string> selectedUseCases = new List<string>();
+
+    private string GetSelectedClass(string useCase)
+    {
+        Console.WriteLine("return selected use case");
+        return selectedUseCases.Contains(useCase) ? "selected" : "";
+    }
+
+    private void ToggleEveryday()
+    {
+        Console.WriteLine("Everyday use case filter selected");
+        ToggleFilter("Everyday");
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleGamer()
+    {
+        Console.WriteLine("Gamer use case filter selected");
+        ToggleFilter("Gamer");
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleVideoEditing()
+    {
+        Console.WriteLine("Video editing use case filter selected");
+        ToggleFilter("Video Editing");
+        UpdateFilteredProducts();
+    }
+
+private void UpdateSliderValue(ChangeEventArgs e)
+{
+    Console.WriteLine("update slider value");
+    budget = Convert.ToInt32(e.Value);
+    UpdateFilteredProducts();
+}
+
+
+
+    private async Task refreshList()
+    {
+        CollectionReference collection = db.Collection("notes");
+        QuerySnapshot docs = await collection.GetSnapshotAsync();
+
+        var lst = new List<Notes>();
+        foreach (var doc in docs.Documents)
+        {
+            lst.Add(new Notes
+            {
+                Id = doc.Id,
+                description = doc.GetValue<string>("description"),
+                cost = doc.GetValue<string>("cost"),
+                useCase = doc.GetValue<string>("useCase")
+            });
+        }
+        notes = lst;
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleFilter(string useCase)
+    {
+        if (selectedUseCases.Contains(useCase))
+        {
+            Console.WriteLine("use case selector removed");
+            selectedUseCases.Remove(useCase);
+        }
+        else
+        {
+            Console.WriteLine("use case selectr added");
+            selectedUseCases.Add(useCase);
+        }
+
+        UpdateFilteredProducts();
+    }
+
+
+private void UpdateFilteredProducts()
+{
+        filteredProducts = notes.Where(product =>
+        {
+            int.TryParse(product.cost, out int cost);
+            var isWithinBudget = cost <= budget;
+            var isSelectedUseCase = selectedUseCases.Count == 0 || selectedUseCases.Contains(product.useCase, StringComparer.OrdinalIgnoreCase);
+
+       
+            Console.WriteLine("Update Filtered Products.");
+            return isWithinBudget && isSelectedUseCase;
+        }).ToList();
+        StateHasChanged(); // Notify Blazor to update the UI
+
+}
+
+
+    private async Task FilterProducts()
+    {
+        // You can perform additional actions when the filter button is clicked
+        await refreshList(); // Refresh the product list
+    }
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("On initialized async");
+        await refreshList();
+    }
+}

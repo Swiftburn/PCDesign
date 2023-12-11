@@ -21,7 +21,9 @@
     position: relative;
     filter: blur(15em);
 }*/
-
+a {
+    text-decoration: none;
+  }
 .page-grid-container {
     display: grid;
     row-gap: 15em;
@@ -61,8 +63,9 @@
     color: white;
     border: none;
     border-radius: 12em;
-    padding: 1em 4em;
+    padding: 1em 5vw;
     justify-content: center;
+    white-space: nowrap;
 }
 
 .cta-button-blue {

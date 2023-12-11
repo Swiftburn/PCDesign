@@ -11,42 +11,155 @@
 
 
 .icon-container {
-    padding-left: 255px;
-    width: 75%;
-    height: 75%;
+    width: 150px;
+    height: 150px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    overflow: hidden; 
+    margin: 30px 20px 30px 30px;
+    padding: 10px;
+}
+
+.welcome {
+    font-size: 50px; 
+    padding-top: 20px; 
+    margin: 0; 
 }
 
 body {
     text-align: center;
     background-color: rgba(5, 0, 33, 1);
     color: white;
+    margin: 0;
+    padding: 0;
 }
 
 .profile-menu {
     color: black;
-    padding-top: 150px;
-    padding-bottom: 150px;
-    background-color: white;
-    margin: 5px auto;
-    width: 80%;
-    font-size: 35px;
-    display: inline-block;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    background-color:#513576;
+    margin: 25px auto;
+    max-width: 900px;
+    font-size: 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     border-style: solid;
-    border-width: 20px;
+    border-width: 10px;
     border-color: rgba(5, 0, 33, 1);
-    border-radius: 150px;
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); 
 }
 
-
-.welcome {
-    font-size: 100px;
-    padding-top: 100px;
+.wow, .user-actions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 10px;
+    flex-grow: 1; 
 }
 
 .wow {
-    text-align: left;
-    font-size: 1.1em;
-    padding-right: 5em;
-    padding-left: 5em;
+    align-items: flex-start;
+    color: white;
 }
 
+.user-info-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+    width: 100%; 
+}
+
+.account {
+    width:  100%; 
+    height: auto; 
+    border-radius: 50%;
+}
+
+.user-actions{
+    margin-top: 10px;
+    align-items: flex-end;
+}
+
+.share-profile-button,
+.create-build-button {
+    padding: 10px 20px; 
+    margin-right: 10px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    margin-bottom: 10px;
+}
+
+.create-build-button{
+    background-color:aqua;
+}
+
+#saved-builds-container {
+
+    padding: 15px;
+    margin-top: 20px; 
+    border-radius: 10px;
+    width: 80%;
+    margin: 20px auto;
+}
+
+.saved-build-entry {
+    background-color: #5276D0; 
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.build-icon {
+    width: 85px; 
+    height: auto; 
+    margin-right: 20px;
+}
+
+.build-details {
+    display: flex;
+    flex-grow: 1; 
+}
+
+.build-name {
+    font-size: 1em;
+    color: #ffffff;
+    margin-right: auto;
+}
+
+.build-price {
+    font-size: 1em;
+    color: #ffffff;
+    margin-right: 30px;
+}
+
+
+.edit-build, .delete-build {
+    padding: 5px 10px;  
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer;
+    font-size: 0.9em; 
+    color: white; 
+    margin-left: 10px;
+}
+
+.edit-build{
+    color: black;
+    background-color: white; 
+}
+
+.edit-build:hover, .delete-build:hover {
+    opacity: 0.8;
+}
+
+.delete-build{
+    background-color: red;
+}

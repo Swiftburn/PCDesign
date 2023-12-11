@@ -11,18 +11,18 @@
 
 
 .icon-container {
-    /* padding-left: 120px; */
-    width: 300px;
-    height: 300px;
-    margin-left: auto;
-    margin-right: auto;
+    width: 100px;
+    height: 100px;
+    /* margin-left: auto;
+    margin-right: auto; */
+    margin: auto;
 }
 body {
     text-align: center;
     background-color: rgba(5, 0, 33, 1);
-    color: white;
+    color: black;
 }
-.login-menu {
+/* .login-menu {
     color: black;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -38,7 +38,31 @@ body {
     border-width: 20px;
     border-color: rgba(5, 0, 33, 1);
     border-radius: 50px;
+} */
+
+.login-menu {
+    background-color: white;
+    margin: 20px auto;
+    width: 400px; /* Narrower form */
+    padding: 20px;
+    border-radius: 10px; /* Softer border radius */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
 }
+
+.input, .login-button {
+    width: 100%; 
+    padding: 10px;
+    margin-bottom: 10px; 
+    border-radius: 5px;
+    border: 1px solid #ddd; 
+}
+
+
+.welcome {
+    font-size: 30px; /* Smaller heading size */
+    padding: 20px 0; /* Reduced padding */
+}
+
 .label-email {
     padding-right: 72px;
     text-align: left;
@@ -49,11 +73,7 @@ body {
     border-radius: 15px;
     padding-left: 15px;
 }
-.welcome{
-    font-size: 100px;
-    padding-top: 100px;
-    
-}
+
 .login-button {
     background-color: rgba(87, 104, 202, 0.4);
     color: white;
@@ -61,10 +81,19 @@ body {
     border-radius: 25px;
     border-width: 5px;
     border-color: rgba(87, 104, 202, 0.4);
-    padding-top: 15px;
+    /* padding-top: 15px;
     padding-bottom: 15px;
     padding-right: 10px;
-    padding-left: 10px;
+    padding-left: 10px; */
 }
-
+/* .account{
+    width: 200px;
+} */
+/* input[type=email], input[type=password] {
+    font-size: 14px; 
+    padding: 10px; 
+    width: 250px; 
+    border-radius: 25px;
+    border-width: 5px;
+} */
 

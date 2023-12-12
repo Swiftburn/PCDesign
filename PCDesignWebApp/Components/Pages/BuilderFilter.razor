@@ -25,25 +25,26 @@
                 <!-- Budget Filter -->
                 <h5>Please Select Your Budget</h5>
                 <div class="slider">
-                    <input type="range" id="slider" min="50" max="3000" value="@budget" @oninput="UpdateSliderValue" />
+                    <input type="range" id="slider" min="50" max="3000" @bind="budget" @oninput="UpdateSliderValue" />
                     <p>Selected Value: <span id="sliderValue">$@budget</span></p>
                 </div>
 
                 <!-- Use Case Filter -->
-               <h5>Please Select Your Use Case</h5>
-            <div class="filter-options">
-                <button class="dot" @onclick="ToggleEveryday" @class="GetSelectedClass('Everyday')"></button>
-                <p class="options">Everyday</p>
-            </div>
-            <div class="filter-options">
-                <button class="dot" @onclick="ToggleGamer" @class="GetSelectedClass('Gamer')"></button>
-                <p class="options">Gamer</p>
-            </div>
-            <div class="filter-options">
-                <button class="dot" @onclick="ToggleVideoEditing" @class="GetSelectedClass('Video Editing')"></button>
-                <p class="options">Video Editing</p>
-            </div>
-            
+                <h5>Please Select Your Use Case</h5>
+                <div class="filter-options">
+                    <button class="dot" @onclick="ToggleEveryday" @class="GetSelectedClass('Everyday')"></button>
+                    <p class="options">Everyday</p>
+                </div>
+                <div class="filter-options">
+                    <button class="dot" @onclick="ToggleGamer" @class="GetSelectedClass('Gamer')"></button>
+                    <p class="options">Gamer</p>
+                </div>
+                <div class="filter-options">
+                    <button class="dot" @onclick="ToggleVideoEditing"
+                        @class="GetSelectedClass('Video Editing')"></button>
+                    <p class="options">Video Editing</p>
+                </div>
+
 
 
             </div>
@@ -75,15 +76,15 @@
 
         <div class="prebuild-grid">
             @foreach (var product in filteredProducts)
-                {
-                    <div class="prebuild-options">
-                        <a class="prebuild-link" href="/builderview">
-                            <img src="images/case.png" class="case-image">
-                        </a>
-                        <h5 class="prebuild-text">$@product.cost</h5>
-                        <p class="prebuild-text">@product.description</p>
-                    </div>
-                }
+            {
+                <div class="prebuild-options">
+                    <a class="prebuild-link" href="/builderview">
+                        <img src="images/case.png" class="case-image">
+                    </a>
+                    <h5 class="prebuild-text">$@product.cost</h5>
+                    <p class="prebuild-text">@product.description</p>
+                </div>
+            }
 
 
             <div class="prebuild-options">
@@ -110,7 +111,7 @@
                 <p class="prebuild-text">Corsair Medium Tower</p>
             </div>
 
-        
+
 
         </div>
 
@@ -122,10 +123,10 @@
 
 </body>
 
-    @foreach (var note in notes)
-    {
-        <p> @note.description - Cost: $@note.cost</p>
-    }
+@foreach (var note in notes)
+{
+    <p> @note.description - Cost: $@note.cost</p>
+}
 
 
 <script>
@@ -135,7 +136,11 @@
 
 
 @code {
+
     FirestoreDb db = FirestoreDb.Create("pcdesign-99abf");
+
+
+
 
     public class Notes
     {
@@ -147,7 +152,7 @@
 
     private IEnumerable<Notes> notes = Array.Empty<Notes>();
     private IEnumerable<Notes> filteredProducts = Array.Empty<Notes>();
-    private int budget = 50;
+    private int budget = 900;
     private List<string> selectedUseCases = new List<string>();
 
     private string GetSelectedClass(string useCase)
@@ -177,12 +182,15 @@
         UpdateFilteredProducts();
     }
 
-private void UpdateSliderValue(ChangeEventArgs e)
+    private void UpdateSliderValue()
 {
-    Console.WriteLine("update slider value");
-    budget = Convert.ToInt32(e.Value);
-    UpdateFilteredProducts();
+    InvokeAsync(() =>
+    {
+        Console.WriteLine("Update slider value");
+        UpdateFilteredProducts();
+    });
 }
+
 
 
 
@@ -195,12 +203,12 @@ private void UpdateSliderValue(ChangeEventArgs e)
         foreach (var doc in docs.Documents)
         {
             lst.Add(new Notes
-            {
-                Id = doc.Id,
-                description = doc.GetValue<string>("description"),
-                cost = doc.GetValue<string>("cost"),
-                useCase = doc.GetValue<string>("useCase")
-            });
+                {
+                    Id = doc.Id,
+                    description = doc.GetValue<string>("description"),
+                    cost = doc.GetValue<string>("cost"),
+                    useCase = doc.GetValue<string>("useCase")
+                });
         }
         notes = lst;
         UpdateFilteredProducts();
@@ -223,33 +231,33 @@ private void UpdateSliderValue(ChangeEventArgs e)
     }
 
 
-private void UpdateFilteredProducts()
-{
+    private void UpdateFilteredProducts()
+    {
         filteredProducts = notes.Where(product =>
         {
             int.TryParse(product.cost, out int cost);
             var isWithinBudget = cost <= budget;
-            var isSelectedUseCase = selectedUseCases.Count == 0 || selectedUseCases.Contains(product.useCase, StringComparer.OrdinalIgnoreCase);
+            var isSelectedUseCase = selectedUseCases.Count == 0 || selectedUseCases.Contains(product.useCase,
+    StringComparer.OrdinalIgnoreCase);
 
-       
+
             Console.WriteLine("Update Filtered Products.");
             return isWithinBudget && isSelectedUseCase;
         }).ToList();
+        Console.WriteLine("Filtered Products State Has Changed!");
         StateHasChanged(); // Notify Blazor to update the UI
 
-}
-
-
-    private async Task FilterProducts()
-    {
-        // You can perform additional actions when the filter button is clicked
-        await refreshList(); // Refresh the product list
     }
+
+
+
 
 
     protected override async Task OnInitializedAsync()
     {
         Console.WriteLine("On initialized async");
         await refreshList();
+        Console.WriteLine("Initialize State Has Changed!");
+        StateHasChanged();
     }
 }

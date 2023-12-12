@@ -3,6 +3,8 @@ using PCDesignWebApp.Components;
 using Microsoft.JSInterop;
 using System.Threading.Tasks;
 
+
+
 string credentialPath = @"../pcdesign-firebase-key.json";
 Environment.SetEnvironmentVariable("GOOGLE_APPLICATION_CREDENTIALS", credentialPath);
 
@@ -14,6 +16,7 @@ builder.Services.AddOptions();
 builder.Services.AddAuthorizationCore();
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
 
 
 

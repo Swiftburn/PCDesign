@@ -33,6 +33,7 @@ a {
     align-items: center;
 }
 
+
 .cta-image-style {
     width: 35em;
     height: auto;
@@ -70,11 +71,23 @@ a {
 
 .cta-button-blue {
     background: rgba(0, 145, 255, 1);
+    
+}
+
+/* .cta-button-blue-Hover {
+   color: black;
+    
+} */
+
+a:hover {
+    color: black;
 }
 
 .cta-button-purple {
     background: rgba(123, 52, 135, 1);
 }
+
+
 
 .center {
     text-align: center;

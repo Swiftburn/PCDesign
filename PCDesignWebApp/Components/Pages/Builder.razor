@@ -9,12 +9,20 @@
  *
 -->
 
+@using Google.Cloud.Firestore
+@using Microsoft.AspNetCore.Components;
+@using System;
+@using System.Collections.Generic;
+@using System.Linq;
+@using System.Threading.Tasks;
+
 @page "/builder"
+
+@inject IJSRuntime JSRuntime
 
 <link href="css/Builder.css" rel="stylesheet" />
 
 <PageTitle>Builder</PageTitle>
-
 
 <body>
 
@@ -23,72 +31,30 @@
         <div class="filter-cta-container">
             <div class="filter-background">
 
-                @*Budget Filter*@
-
+                <!-- Budget Filter -->
                 <h5>Please Select Your Budget</h5>
                 <div class="slider">
-                    <input type="range" id="slider" min="500" max="3000" value="500" />
-                    <p>Selected Value: <span id="sliderValue">$500</span></p>
+                    <input type="range" id="slider" min="50" max="3000" @bind="budget" @oninput="UpdateSliderValue" />
+                    <p>Selected Value: <span id="sliderValue">$@budget</span></p>
                 </div>
 
-
-                @*Use Case Filter*@
-
+                <!-- Use Case Filter -->
                 <h5>Please Select Your Use Case</h5>
-
                 <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Everyday</p>
+                    <button class="dot" @onclick="ToggleEveryday" @class="GetSelectedClass('Everyday')"></button>
+                    <p class="options">Everyday</p>
                 </div>
-
                 <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Business</p>
+                    <button class="dot" @onclick="ToggleGamer" @class="GetSelectedClass('Gamer')"></button>
+                    <p class="options">Gamer</p>
                 </div>
-
                 <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Gamer</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Visual Artist</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Video Editing</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Engineering</p>
+                    <button class="dot" @onclick="ToggleVideoEditing"
+                        @class="GetSelectedClass('Video Editing')"></button>
+                    <p class="options">Video Editing</p>
                 </div>
 
 
-                @*Case Size Filter*@
-
-                <h5>Case Size</h5>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Micro Tower</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Medium Tower</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">Full Tower</p>
-                </div>
-
-
-                @*Accessories Filter*@
-
-                <h5>Accessories</h5>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">RGB Lights</p>
-                </div>
-
-                <div class="filter-options">
-                    <button class="dot"></button> <p class="options">CD Drive</p>
-                </div>
 
             </div>
 
@@ -100,7 +66,7 @@
             </div>
         </div>
 
-        
+
 
 
 
@@ -118,132 +84,164 @@
         @*Available Products*@
 
         <div class="prebuild-grid">
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
+            @foreach (var product in filteredProducts)
+            {
+                <div class="prebuild-options">
+                    <a class="prebuild-link" href="/builderview">
+                        <img src="images/case.png" class="case-image">
+                    </a>
+                    <h5 class="prebuild-text">$@product.cost</h5>
+                    <p class="prebuild-text">@product.name</p>
+                </div>
+            }
 
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
 
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
-
-            <div class="prebuild-options">
-                <a class="prebuild-link" href="/builderview">
-                    <img src="images/case.png" class="case-image">
-                </a>
-                <h5 class="prebuild-text">$3,000</h5>
-                <p class="prebuild-text">Corsair Medium Tower</p>
-            </div>
 
         </div>
 
 
     </div>
 
-        
+
 
 
 </body>
+
+@foreach (var note in Builds)
+{
+    <p> @note.name - Cost: $@note.cost</p>
+}
+
+
+<script>
+    console.log('JavaScript code is running.');
+    // ... rest of your JavaScript code
+</script>
+
+
+@code {
+
+    FirestoreDb db = FirestoreDb.Create("pcdesign-99abf");
+
+
+
+
+    public class Notes
+    {
+        public string Id { get; set; }
+        public string name { get; set; }
+        public string cost { get; set; }
+        public string useCase { get; set; }
+    }
+
+    private IEnumerable<Notes> Builds = Array.Empty<Notes>();
+    private IEnumerable<Notes> filteredProducts = Array.Empty<Notes>();
+    private int budget = 1600;
+    private List<string> selectedUseCases = new List<string>();
+
+    private string GetSelectedClass(string useCase)
+    {
+        Console.WriteLine("return selected use case");
+        return selectedUseCases.Contains(useCase) ? "selected" : "";
+    }
+
+    private void ToggleEveryday()
+    {
+        Console.WriteLine("Everyday use case filter selected");
+        ToggleFilter("Everyday");
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleGamer()
+    {
+        Console.WriteLine("Gamer use case filter selected");
+        ToggleFilter("Gamer");
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleVideoEditing()
+    {
+        Console.WriteLine("Video editing use case filter selected");
+        ToggleFilter("Video Editing");
+        UpdateFilteredProducts();
+    }
+
+    private void UpdateSliderValue()
+    {
+        InvokeAsync(() =>
+        {
+            Console.WriteLine("Update slider value");
+            UpdateFilteredProducts();
+        });
+    }
+
+
+
+
+    private async Task refreshList()
+    {
+        CollectionReference collection = db.Collection("Builds");
+        QuerySnapshot docs = await collection.GetSnapshotAsync();
+
+        var lst = new List<Notes>();
+        foreach (var doc in docs.Documents)
+        {
+            lst.Add(new Notes
+                {
+                    Id = doc.Id,
+                    name = doc.GetValue<string>("name"),
+                    cost = doc.GetValue<string>("cost"),
+                @* useCase = doc.GetValue<string>("useCase") *@
+});
+        }
+        Builds = lst;
+        UpdateFilteredProducts();
+    }
+
+    private void ToggleFilter(string useCase)
+    {
+        if (selectedUseCases.Contains(useCase))
+        {
+            Console.WriteLine("use case selector removed");
+            selectedUseCases.Remove(useCase);
+        }
+        else
+        {
+            Console.WriteLine("use case selectr added");
+            selectedUseCases.Add(useCase);
+        }
+
+        UpdateFilteredProducts();
+    }
+
+
+    private void UpdateFilteredProducts()
+    {
+        filteredProducts = Builds.Where(product =>
+        {
+            int.TryParse(product.cost, out int cost);
+            var isWithinBudget = cost <= budget;
+            var isSelectedUseCase = selectedUseCases.Count == 0 || selectedUseCases.Contains(product.useCase,
+    StringComparer.OrdinalIgnoreCase);
+
+
+            Console.WriteLine("Update Filtered Products.");
+            return isWithinBudget && isSelectedUseCase;
+        }).ToList();
+        Console.WriteLine("Filtered Products State Has Changed!");
+        StateHasChanged(); // Notify Blazor to update the UI
+
+    }
+
+
+
+
+
+    protected override async Task OnInitializedAsync()
+    {
+        Console.WriteLine("On initialized async");
+        await refreshList();
+        Console.WriteLine("Initialize State Has Changed!");
+        StateHasChanged();
+    }
+}

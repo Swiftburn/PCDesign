@@ -8,7 +8,15 @@
  * @copyright Copyright (c) 2023
  * 
  */
-
+.signOut{
+    padding: 10px 20px; 
+    margin-right: 10px; 
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-size: 1em; 
+    margin-bottom: 10px;
+}
 
 .icon-container {
     width: 150px;
@@ -61,6 +69,11 @@ body {
 }
 
 .wow {
+    align-items: flex-start;
+    color: white;
+    font-weight: bold;
+}
+.wow2 {
     align-items: flex-start;
     color: white;
 }

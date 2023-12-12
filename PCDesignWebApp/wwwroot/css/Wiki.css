@@ -51,6 +51,9 @@
     transition: background-color 0.3s;
 }
 
+.nav-link:hover{
+    color: white;
+}
 
 .content {
     padding: 1rem;
@@ -140,11 +143,21 @@
         content: '▼';
     }
 
-.panel {
-    padding: 0px 12px 1px;
-    background-color: white;
-    transition: max-height 0.2s ease-out;
-    /*border-radius: 12px;*/
-    background-color: #513576;
-    color:white;
-}
+    .panel {
+        padding: 0px 12px 1px;
+        width: 100%;
+        background-color: white;
+        transition: max-height 0.2s ease-out, transform 0.2s ease, opacity 0.2s ease;
+        /* border-radius: 12px; */
+        background-color: #513576;
+        color: white;
+        max-height: 0;
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top;
+      }
+      .accordion-button.actived + .panel {
+        transform: scaleY(1);
+        max-height: 150px;
+        opacity: 1;
+      }

@@ -37,13 +37,45 @@
 
     loadSavedBuilds();
 
+    // Sign Out Stuff
     let SignoutBtn = document.getElementById('signoutButton');
-
     let Signout = () => {
         location.href = "/login";
         sessionStorage.removeItem("user-creds");
         sessionStroage.removeItem("user-info");
     }
-
     SignoutBtn.addEventListener('click', Signout);
+
+    // Delete User Stuff (doesn't work)
+    let ConfirmDeleteBtn = document.getElementById('confirmdeletebtn');
+    let DeleteUserBtn = document.getElementById('deleteuserbtn');
+
+    let DeleteUser = () => {
+        const user = auth.currentUser;
+
+        const credentials = EmailAuthProvider.credentials(
+            user.email,
+            PasswordInp.value
+        );
+
+        reauthenticateWithCredential(user, credentials)
+            .then(() => {
+                deleteDoc(ref(db, 'UserAuthList/' + user.uid));
+                deleteUser(user).then(() => {
+                    location.href = "/login";
+                    sessionStroage.removeItem("user-creds");
+                    sessionStorage.removeItem("user-info");
+                }).catch(error => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                })
+            }).catch(error => {
+                alert(error.message);
+                console.log(error.code);
+                console.log(error.message);
+            })
+    }
+
+    ConfirmDeleteBtn.addEventListener('click', DeleteUser)
 });

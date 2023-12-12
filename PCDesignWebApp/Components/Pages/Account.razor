@@ -16,16 +16,48 @@
 <body>
     <h1 class="welcome">Profile Page</h1>
 
-    <div class="profile-menu">
+     <div class="profile-menu">
+    <div class="user-info-container"> 
         <div class="icon-container">
             <img src="\images\account-icon.svg" alt="account avatar" class="account">
         </div>
-            <div class="wow">
-                <p id="emaildiv" ></p>
-                <p id="firstnamediv"></p>
-                <p id="lastnamediv"></p>
+
+        <div class="wow"> 
+            <p id="emaildiv"></p>
+            <p id="firstnamediv"></p>
+            <p id="lastnamediv"></p>
+        </div>
+        <div class="user-actions"> 
+                <button class="share-profile-button">Edit Profile Info</button>
+                <button class="create-build-button">Create Build</button>
             </div>
     </div>
+
+    <div id="saved-builds-container">
+    <div class="saved-build-entry">
+        <img src="\images\case.png" alt="Build Icon" class="build-icon">
+        <span class="build-name">PC build Name</span>
+        <span class="build-price">$3,000</span>
+        <button class="edit-build">Edit</button>
+        <button class="delete-build">Delete</button>
+    </div>
+    <!-- Repeat the above div for each saved build entry -->
+    <div class="saved-build-entry">
+        <img src="\images\case.png" alt="Build Icon" class="build-icon">
+        <span class="build-name">PC build Name</span>
+        <span class="build-price">$3,000</span>
+        <button class="edit-build">Edit</button>
+        <button class="delete-build">Delete</button>
+    </div>
+    <div class="saved-build-entry">
+        <img src="\images\case.png" alt="Build Icon" class="build-icon">
+        <span class="build-name">PC build Name</span>
+        <span class="build-price">$3,000</span>
+        <button class="edit-build">Edit</button>
+        <button class="delete-build">Delete</button>
+    </div>
+</div>
+</div>
 
     <script defer>
         document.addEventListener("DOMContentLoaded", function () {
@@ -60,6 +92,12 @@
 
             // Update on hash change
             window.onhashchange = updateProfile;
+
+            function loadSavedBuilds() {
+                
+            }
+
+            loadSavedBuilds(); 
         });
     </script>
 

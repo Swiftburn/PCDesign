@@ -8,8 +8,17 @@
 * @copyright Copyright (c) 2023
 *
 */
-
-
+a{
+   color: rgba(80, 83, 221, 0.952);
+   font-weight: bold;
+}
+a:hover{
+    color: rgba(22, 90, 16, 0.952);
+    font-weight: bold;
+ }
+.start{
+    font-size: 15px;
+}
 .icon-container {
     width: 100px;
     height: 100px;
@@ -74,17 +83,18 @@ body {
     padding-left: 15px;
 }
 
-.login-button {
+.login-button{
     background-color: rgba(87, 104, 202, 0.4);
     color: white;
     font-weight: bold;
-    border-radius: 25px;
+    width: 152px;
     border-width: 5px;
     border-color: rgba(87, 104, 202, 0.4);
-    /* padding-top: 15px;
-    padding-bottom: 15px;
-    padding-right: 10px;
-    padding-left: 10px; */
+    cursor: pointer;
+}
+.forgot-pswrd{
+    cursor: pointer;
+    font-size: 15px;
 }
 /* .account{
     width: 200px;

@@ -13,7 +13,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-analytics.js";
 import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-firestore.js";
-import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
+import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-auth.js";
 
 // Firebase Config
 const firebaseConfig = {
@@ -36,6 +36,7 @@ const auth = getAuth(app);
 let EmailInput = document.getElementById('emailInput');
 let PasswordInput = document.getElementById('passwordInput');
 let LoginMenu = document.getElementById('LoginMenu');
+let ForgotPassLabel = document.getElementById('forgotpasslabel');
 
 
 let SignInUser = evt => {
@@ -69,4 +70,16 @@ let SignInUser = evt => {
         })
 }
 
+let ForgotPassword = () => {
+    sendPasswordResetEmail(auth, EmailInput.value)
+        .then(() => {
+            alert("A Password Reset Link has been sent to your email");
+        })
+        .catch((error) => {
+            console.log(error.code);
+            console.log(error.message);
+        })
+}
+
 LoginMenu.addEventListener('submit', SignInUser);
+ForgotPassLabel.addEventListener('click', ForgotPassword);
